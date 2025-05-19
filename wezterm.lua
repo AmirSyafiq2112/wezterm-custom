@@ -4,27 +4,34 @@ local constants = require 'constants'
 
 local config = wezterm.config_builder()
 
+local mux = wezterm.mux
+
+wezterm.on('gui-startup', function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
+
 config.leader = { key = 'q', mods = 'ALT', timeout_milliseconds = 2000 }
 
 config.keys = {
   {
-    mods = 'LEADER',
-    key = 'c',
+    mods = 'CTRL',
+    key = 't',
     action = wezterm.action.SpawnTab 'CurrentPaneDomain',
   },
   {
-    mods = 'LEADER',
-    key = 'x',
+    mods = 'CTRL',
+    key = 'w',
     action = wezterm.action.CloseCurrentPane { confirm = true },
   },
   {
-    mods = 'LEADER',
-    key = 'b',
+    mods = 'CTRL',
+    key = '[',
     action = wezterm.action.ActivateTabRelative(-1),
   },
   {
-    mods = 'LEADER',
-    key = 'n',
+    mods = 'CTRL',
+    key = ']',
     action = wezterm.action.ActivateTabRelative(1),
   },
   {
