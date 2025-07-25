@@ -11,7 +11,7 @@ return {
   selection_bg = '#3c4048',
 
   scrollbar_thumb = '#16181a',
-  split = '#16181a',
+  split = '#6E6D6D',
 
   ansi = {
     '#16181a',

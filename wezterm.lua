@@ -1,6 +1,4 @@
 local wezterm = require 'wezterm'
-local commands = require 'commands'
-local constants = require 'constants'
 
 local config = wezterm.config_builder()
 
@@ -11,7 +9,7 @@ wezterm.on('gui-startup', function(cmd)
   window:gui_window():maximize()
 end)
 
-config.leader = { key = 'q', mods = 'ALT', timeout_milliseconds = 2000 }
+-- config.leader = { key = 'q', mods = 'ALT', timeout_milliseconds = 2000 }
 
 config.keys = {
   {
@@ -35,32 +33,32 @@ config.keys = {
     action = wezterm.action.ActivateTabRelative(1),
   },
   {
-    mods = 'LEADER',
+    mods = 'CTRL',
     key = '\\',
     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
   {
-    mods = 'LEADER',
+    mods = 'CTRL',
     key = '-',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
   },
   {
-    mods = 'LEADER',
+    mods = 'CTRL',
     key = 'h',
     action = wezterm.action.ActivatePaneDirection 'Left',
   },
   {
-    mods = 'LEADER',
+    mods = 'CTRL',
     key = 'l',
     action = wezterm.action.ActivatePaneDirection 'Right',
   },
   {
-    mods = 'LEADER',
+    mods = 'CTRL',
     key = 'k',
     action = wezterm.action.ActivatePaneDirection 'Up',
   },
   {
-    mods = 'LEADER',
+    mods = 'CTRL',
     key = 'j',
     action = wezterm.action.ActivatePaneDirection 'Down',
   },
@@ -88,19 +86,22 @@ config.keys = {
 
 -- Font settings
 config.line_height = 1.2
-config.font_size = 10
+config.font_size = 14
 
 -- COLORS
 config.colors = require 'cyberdream'
+-- config.colors = require 'josean-marteaz'
 
 -- APPEARANCE
 config.cursor_blink_rate = 0
--- config.window_decorations = 'RESIZE'
+config.window_decorations = 'RESIZE'
 config.hide_tab_bar_if_only_one_tab = false
 -- config.enable_tab_bar = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = true
+config.window_background_opacity = 0.95
+config.macos_window_background_blur = 10
 
 wezterm.on('update-right-status', function(window, _)
   local SOLID_LEFT_ARROW = ''
@@ -138,17 +139,10 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
-config.window_background_image = constants.bg_image
-config.macos_window_background_blur = 40
 
 -- MISCELLANEOUS SETTINGS
 config.max_fps = 120
 
--- CUSTOM COMMANDS
-wezterm.on('augment-command-palette', function()
-  return commands
-end)
-
-config.default_prog = { 'powershell' }
+-- config.default_prog = { 'powershell' }
 
 return config
