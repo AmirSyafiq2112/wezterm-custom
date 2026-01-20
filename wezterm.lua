@@ -33,32 +33,32 @@ config.keys = {
     action = wezterm.action.ActivateTabRelative(1),
   },
   {
-    mods = 'CTRL',
-    key = '\\',
+    mods = 'CTRL|SHIFT',
+    key = 'mapped:|',
     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
   {
-    mods = 'CTRL',
-    key = '-',
+    mods = 'SHIFT | CTRL',
+    key = 'mapped:_',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
   },
   {
-    mods = 'CTRL',
+    mods = 'ALT',
     key = 'h',
     action = wezterm.action.ActivatePaneDirection 'Left',
   },
   {
-    mods = 'CTRL',
+    mods = 'ALT',
     key = 'l',
     action = wezterm.action.ActivatePaneDirection 'Right',
   },
   {
-    mods = 'CTRL',
+    mods = 'ALT',
     key = 'k',
     action = wezterm.action.ActivatePaneDirection 'Up',
   },
   {
-    mods = 'CTRL',
+    mods = 'ALT',
     key = 'j',
     action = wezterm.action.ActivatePaneDirection 'Down',
   },
@@ -86,7 +86,7 @@ config.keys = {
 
 -- Font settings
 config.line_height = 1.2
-config.font_size = 14
+config.font_size = 11
 
 -- COLORS
 config.colors = require 'cyberdream'
@@ -100,7 +100,7 @@ config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = true
-config.window_background_opacity = 0.95
+config.window_background_opacity = 1
 config.macos_window_background_blur = 10
 
 wezterm.on('update-right-status', function(window, _)
@@ -143,6 +143,8 @@ config.window_padding = {
 -- MISCELLANEOUS SETTINGS
 config.max_fps = 120
 
--- config.default_prog = { 'powershell' }
+-- config.launch_menu = require 'launch-menu'
+
+config.default_prog = { 'powershell' }
 
 return config
