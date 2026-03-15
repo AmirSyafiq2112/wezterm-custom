@@ -13,34 +13,53 @@ end)
 
 config.keys = {
   {
-    mods = 'CTRL',
+    mods = 'ALT',
     key = 't',
     action = wezterm.action.SpawnTab 'CurrentPaneDomain',
   },
+	{
+		mods = 'CTRL',
+		key = 't',
+		-- We call SpawnCommandInNewTab and pass a table containing the cwd
+		action = wezterm.action.SpawnCommandInNewTab {
+						domain = 'CurrentPaneDomain',
+						cwd = wezterm.home_dir,
+		},
+	},
   {
     mods = 'CTRL',
     key = 'w',
     action = wezterm.action.CloseCurrentPane { confirm = true },
   },
   {
-    mods = 'CTRL',
+    mods = 'ALT',
     key = '[',
     action = wezterm.action.ActivateTabRelative(-1),
   },
   {
-    mods = 'CTRL',
+    mods = 'ALT',
     key = ']',
     action = wezterm.action.ActivateTabRelative(1),
   },
   {
-    mods = 'CTRL|SHIFT',
-    key = 'mapped:|',
-    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    mods = 'ALT',
+    key = '\\',
+    action= wezterm.action {SplitHorizontal = {domain="CurrentPaneDomain"}}
   },
   {
-    mods = 'SHIFT | CTRL',
-    key = 'mapped:_',
+     mods = 'CTRL',
+     key = '\\',
+     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain', cwd = wezterm.home_dir },
+  },
+  {
+    mods = 'ALT',
+    key = '-',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
+     mods = 'CTRL',
+     key = '-',
+     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain', cwd = wezterm.home_dir },
   },
   {
     mods = 'ALT',
