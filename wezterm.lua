@@ -9,7 +9,7 @@ wezterm.on('gui-startup', function(cmd)
   window:gui_window():maximize()
 end)
 
--- config.leader = { key = 'q', mods = 'ALT', timeout_milliseconds = 2000 }
+config.leader = { key = 'q', mods = 'ALT', timeout_milliseconds = 2000 }
 
 config.keys = {
   {
@@ -17,17 +17,17 @@ config.keys = {
     key = 't',
     action = wezterm.action.SpawnTab 'CurrentPaneDomain',
   },
-	{
-		mods = 'CTRL',
-		key = 't',
-		-- We call SpawnCommandInNewTab and pass a table containing the cwd
-		action = wezterm.action.SpawnCommandInNewTab {
-						domain = 'CurrentPaneDomain',
-						cwd = wezterm.home_dir,
-		},
-	},
+-- {
+-- 	mods = 'CTRL',
+-- 	key = 't',
+-- 	-- We call SpawnCommandInNewTab and pass a table containing the cwd
+-- 	action = wezterm.action.SpawnCommandInNewTab {
+-- 					domain = 'CurrentPaneDomain',
+-- 					cwd = wezterm.home_dir,
+-- 	},
+-- },
   {
-    mods = 'CTRL',
+    mods = 'ALT',
     key = 'w',
     action = wezterm.action.CloseCurrentPane { confirm = true },
   },
@@ -46,21 +46,21 @@ config.keys = {
     key = '\\',
     action= wezterm.action {SplitHorizontal = {domain="CurrentPaneDomain"}}
   },
-  {
-     mods = 'CTRL',
-     key = '\\',
-     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain', cwd = wezterm.home_dir },
-  },
+  -- {
+  --    mods = 'CTRL',
+  --    key = '\\',
+  --    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain', cwd = wezterm.home_dir },
+  -- },
   {
     mods = 'ALT',
     key = '-',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
   },
-  {
-     mods = 'CTRL',
-     key = '-',
-     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain', cwd = wezterm.home_dir },
-  },
+  -- {
+  --    mods = 'CTRL',
+  --    key = '-',
+  --    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain', cwd = wezterm.home_dir },
+  -- },
   {
     mods = 'ALT',
     key = 'h',
